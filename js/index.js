@@ -12,6 +12,7 @@
   clearTimeout(timer);
 
   function jieliu(fun, delay){
+    // 管理timer
     let timer = null;
     
     return function(){
