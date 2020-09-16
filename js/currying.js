@@ -25,18 +25,3 @@ const cost = (function(){
     }
   }
 })();
-
-function interval(callback, time){
-  function myInterval(){
-    setTimeout(myInterval, time);
-    callback();
-  }
-  setTimeout(myInterval, time);
-}
-
-Function.prototype.bind = Function.prototype.bind || function(ctx, ...args1){
-  let that = this;
-  return function (...args2){
-    that.call(ctx, ...args1, ...args2);
-  }
-}
