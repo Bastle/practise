@@ -1,6 +1,15 @@
 
 (function(){
-  Array.prototype.reduc = function (callback, initialValue) {
+  /**
+   * 对数组进行循环，逐个进行处理，将处理后的结果及下一项传入 callback 函数，返回最后的结果
+   * @param {function} callback 
+   * @param {*} initialValue 
+   * @returns {*}
+   */
+  Array.prototype.fakeReduce = function (callback, initialValue) {
+    if(typeof callback !== 'function') {
+      throw new Error(`${callback} is not a function`)
+    }
     if(!this.length && typeof initialValue === 'undefined'){
       throw new Error('reduce of empty array && no initial value');
     }
@@ -11,5 +20,5 @@
     }
     return result;
   }
-  console.log([].reduc((total, cur) => total + cur))
+  console.log([1].fakeReduce(() => {}, 1));
 })()

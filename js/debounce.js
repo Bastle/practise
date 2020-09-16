@@ -1,5 +1,10 @@
 (function(){
-  
+  /**
+   * 
+   * @param {function} fun 
+   * @param {number} delay 
+   * @param {boolean} immediate 
+   */
   function debounce(fun, delay = 3000, immediate = false){
     // 管理timer
     let timer = null;
@@ -65,24 +70,4 @@
       })
     }
   }
-
-  let c = {
-    a: 123456,
-    b: function() {
-      console.log(this);
-    }
-  }
-  c.d = debounce(c.b, 300);
-  c.d();
-  
-  function e(num) {
-    return num * 2;
-  }
-  f = debounce2(e, 300);
-  window.addEventListener('scroll', () => {
-    f(2).then(res => {
-      console.log('---res---->',res);
-    })
-  });
-
 })()

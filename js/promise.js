@@ -50,9 +50,6 @@ class Promise {
     }
   }
   static all(arrList) {
-    if(!Array.isArray(arrList)){
-
-    }
     return Promise((resolve, reject) => {
       const resultArr = [];
       const count = 0;
@@ -78,4 +75,35 @@ class Promise {
   static race(arrList){
 
   }
+  
+  static tryLimitTimes(fn, times = 3){
+    return new Promise((resolve, reject) => {
+      let flag = 1;
+      function tryPromise(){
+        fn().then(resolve)
+          .catch(err => {
+            flag++;
+            if(flag > times){
+              reject(err);
+            } else {
+              tryPromise();
+            }
+          })
+      }
+      tryPromise();
+    })
+  }
+}
+
+function getNum(){
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      let num = Math.random();
+      if(num > 0.1){
+        resolve(num);
+      } else {
+        reject(num);
+      }
+    },1000)
+  })
 }

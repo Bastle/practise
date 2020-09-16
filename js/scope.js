@@ -16,41 +16,4 @@
   }
   b(1,2,3);
   b.apply(this, [1,2,3]);
-  let obj = {
-    x: 1,
-    currying: function(fn){
-      let args = Array.prototype.slice.call(arguments, 1);
-      function next(){
-        args = args.concat(Array.prototype.slice.call(arguments));
-        return next;
-      }
-      next.toString = function(){
-        return fn.apply(null, args);
-      }
-      next.valueOf = function(){
-        return fn.apply(null, args);
-      }
-      return next;
-    }
-  }
-  function currying (fn){
-    let args = Array.prototype.slice.call(arguments, 1);
-    function next(){
-      args = args.concat(Array.prototype.slice.call(arguments));
-      return next;
-    }
-    next.toString = function(){
-      return fn.apply(null, args);
-    }
-    next.valueOf = function(){
-      return fn.apply(null, args);
-    }
-    return next;
-  }
-  function cba(){
-    console.log('x', this.x);
-  }
-  let abc = obj.currying(cba);
-  abc();
-  // console.log('currying', abc(1)(2)(3)());
 })()
