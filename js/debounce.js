@@ -12,7 +12,7 @@
       // 将函数 this 指向 debounce 返回的函数被调用时的 this
       let ctx = this;
       // 将参数传递给需要 debounce 的函数 
-      // 当 setTimeout 内的 callback 使用箭头函数时，可以不用额外赋值，因为箭头函数没有 arguments 会直接使用父函数的 arguments
+      // tips: 当 setTimeout 内的 callback 使用箭头函数时，可以不用额外赋值，因为箭头函数没有 arguments 会直接使用父函数的 arguments
       let args = arguments;
       
       if(timer){
@@ -37,6 +37,7 @@
   }
 
   // 处理有返回值的函数防抖
+  // 使用 promise 将处理后的数据返回
   function debounce2(fun, delay = 3000, immediate = false){
     // 管理timer
     let timer = null;

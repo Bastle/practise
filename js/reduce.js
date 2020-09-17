@@ -3,7 +3,7 @@
   /**
    * 对数组进行循环，逐个进行处理，将处理后的结果及下一项传入 callback 函数，返回最后的结果
    * @param {function} callback 
-   * @param {*} initialValue 
+   * @param {?*} initialValue 
    * @returns {*}
    */
   Array.prototype.fakeReduce = function (callback, initialValue) {
