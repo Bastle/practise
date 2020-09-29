@@ -62,5 +62,25 @@
   }
   let abc = obj.currying(cba);
   abc();
+
+
+
+  function currying1(fun){
+    let args = [];
+    function _fun(){
+      if(arguments.length === 0){
+        return fun(...args)
+      } else {
+        args.push(Array.prototype.slice.apply(arguments)[0]);
+        return _fun;
+      }
+    }
+    return _fun;
+  }
+  function add(x,y,z){
+    return x + y + z;
+  }
+  let add1 = currying1(add);
+  add1(1)(2)(3)();
 })()
 
