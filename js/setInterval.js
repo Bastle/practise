@@ -4,9 +4,10 @@
   /**
    * 
    * @param {function} fn 
-   * @param {number} timeout 
+   * @param {number} timeout
+   * @returns {function} clear 
    */
-  function mySetInterval(callback, timeout) {
+  function mySetInterval(callback, timeout = 1000) {
     // 参数判断 （编码基本功）
     if(!arguments.length){
       throw new Error('1 argument required, but only 0')
@@ -35,4 +36,17 @@
   let clear = mySetInterval(() => console.log(1), 200);
 
   setTimeout(clear, 2000)
+
+  // function mySetInterval(cb, timeout){
+  //   let timer;
+  //   function callCb(){
+  //     timer = setTimeout(callCb, timeout);
+  //     cb();
+  //   }
+  //   timer = setTimeout(callCb, timeout);
+  //   return () => {
+  //     clearTimeout(timer);
+  //     timer = null;
+  //   }
+  // }
 })()

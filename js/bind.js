@@ -22,12 +22,4 @@
       fn.call(ctx, ...arg1, ...arg2);
     }
   }
-
-  function a (store){
-    return function(next) {
-      return action => {
-        123
-      }
-    } 
-  }  
 })()

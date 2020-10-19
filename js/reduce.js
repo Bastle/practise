@@ -21,4 +21,5 @@
     return result;
   }
   console.log([1].fakeReduce(() => {}, 1));
+  
 })()
