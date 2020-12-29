@@ -17,6 +17,8 @@
       }, args);
     }
   }
+  
+  // react-redux 内部 compose 实现
   function compose(...funcs){
     if(funcs.length === 0){
       return arg => arg;

@@ -9,7 +9,7 @@
     let fn = this;
     let arg = Array.prototype.slice.call(arguments, 1);
     return function(){
-      arg.concat(Array.prototype.slice(arguments));
+      arg.concat(Array.prototype.slice.call(arguments));
       fn.apply(ctx, arg);
     }
   }
@@ -22,4 +22,6 @@
       fn.call(ctx, ...arg1, ...arg2);
     }
   }
+
+
 })()
